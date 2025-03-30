@@ -4,7 +4,12 @@ import connectDB from "./utils/connectDB.js";
 
 dotenv.config();
 
-app.listen(process.env.PORT, '0.0.0.0', () => {
+// app.listen(process.env.PORT, '0.0.0.0', () => {
+//     connectDB();
+//     console.log("Server is running on port 8000!");
+// });
+
+app.listen(process.env.PORT, () => {
     connectDB();
     console.log("Server is running on port 8000!");
 });
