@@ -14,7 +14,6 @@ app.use("/api/v1/auth", authRouter)
 app.use("/api/v1/post", postRouter);
 
 app.get("/", (req, res) => {
-    console.log(req);
     res.send("Api is working!!")
 });
 
