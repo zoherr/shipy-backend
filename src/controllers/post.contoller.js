@@ -1,8 +1,10 @@
+import uploadToCloudinary from "../helper/uploadToCloudinary.js";
 import Post from "../models/post.model.js";
 import fs from "fs"
 
 export const create = async (req, res, next) => {
     try {
+
         const { image, caption } = req.body;
         if (!image || !caption) {
             return res.status(400).json({
@@ -11,18 +13,14 @@ export const create = async (req, res, next) => {
             });
         };
 
-        const { path } = req.file;
-        const { url, public_id } = await uploadToCloudinary(path);
+        const { url, public_id } = await uploadToCloudinary(image);
 
         const post = new Post({
             ...req.body,
             image: url,
             user: req.user._id
         });
-        fs.unlink('path', (err) => {
-            if (err) throw err;
-            console.log('File successfully deleted');
-        });
+
         await post.save();
         res.status(200).json({
             post,

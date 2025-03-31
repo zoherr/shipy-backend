@@ -5,8 +5,8 @@ import { verifyToken } from "../middlewares/userVerify.js";
 
 const postRouter = Router();
 
-postRouter.post("/create",verifyToken, upload.single("image"), create);
-postRouter.get("/get",verifyToken,getPost)
+postRouter.post("/create",verifyToken, create);
+postRouter.get("/get",getPost)
 postRouter.delete("/:id",verifyToken,deletePost)
 postRouter.get("/user",verifyToken,getPostOfUser)
 export default postRouter;
