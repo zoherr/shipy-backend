@@ -76,7 +76,7 @@ export const deletePost = async (req, res, next) => {
 
 export const getPostOfUser = async (req, res, next) => {
     try {
-        const posts = await Post.findOne({ user: req.user._id });
+        const posts = await Post.find({ user: req.user.id });
         res.status(200).json({
             posts
         })
