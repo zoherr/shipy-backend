@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, { Types } from "mongoose";
 
 const userSchema = new mongoose.Schema({
     username: {
@@ -15,6 +15,18 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    followers: [{
+        type: Types.ObjectId,
+        ref: "User"
+    }],
+    followings: [{
+        type: Types.ObjectId,
+        ref: "User"
+    }],
+    notification: [{
+        type: Types.ObjectId,
+        ref: "Notification"
+    }],
     avatar: String
 }, { timestamps: true });
 

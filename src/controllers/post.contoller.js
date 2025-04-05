@@ -58,7 +58,9 @@ export const deletePost = async (req, res, next) => {
                 message: "Post not found!!"
             });
         };
-        if (post.user !== req.user._id) {
+
+
+        if (toString(post.user) !== toString(req.user._id)) {
             return res.status(400).json({
                 success: false,
                 message: "Unauthorized Access!!"
@@ -76,7 +78,7 @@ export const deletePost = async (req, res, next) => {
 
 export const getPostOfUser = async (req, res, next) => {
     try {
-        const posts = await Post.find({ user: req.user.id });
+        const posts = await Post.find({ user: req.user._id });
         res.status(200).json({
             posts
         })
@@ -84,3 +86,4 @@ export const getPostOfUser = async (req, res, next) => {
         next(error);
     }
 }
+

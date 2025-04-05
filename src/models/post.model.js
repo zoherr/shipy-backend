@@ -6,11 +6,14 @@ const postSchema = new Schema({
         required: true
     },
     image: String,
-    likes: Number,
-    user : {
-        type : Types.ObjectId,
-        ref : "User"
-    }
+    user: {
+        type: Types.ObjectId,
+        ref: "User"
+    },
+    likes: [{
+        type: Types.ObjectId,
+        ref: "User"
+    }],
 }, { timestamps: true });
 
 const Post = model("Post", postSchema);

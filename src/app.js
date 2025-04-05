@@ -3,6 +3,7 @@ import express from "express"
 import morgan from "morgan";
 import authRouter from "./routes/auth.route.js";
 import postRouter from "./routes/post.route.js";
+import userRouter from "./routes/user.route.js";
 
 export const app = express();
 
@@ -14,6 +15,7 @@ app.use(morgan("dev"));
 
 app.use("/api/v1/auth", authRouter)
 app.use("/api/v1/post", postRouter);
+app.use("/api/v1/user", userRouter)
 
 app.get("/", (req, res) => {
     res.send("Api is working!!")
