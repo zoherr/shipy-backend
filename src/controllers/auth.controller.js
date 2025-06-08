@@ -31,6 +31,9 @@ export const signUp = async (req, res, next) => {
             ...req.body,
             avatar: avatar,
             password: hashedPassword,
+            username: username.toLowerCase(),
+            email: email.toLowerCase()
+            
         });
 
         const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET, { expiresIn: "5d" });
